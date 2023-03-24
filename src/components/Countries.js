@@ -4,6 +4,7 @@ import axios from "axios";
 const Countries = () => {
   const [data, setData] = useState([])
   const [rangeValue, setRangeValue] = useState(36);
+  const [selectedRadio, setSelectedRadio] = useState("");
   const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   useEffect(() => {
@@ -20,8 +21,8 @@ const Countries = () => {
         {
           radios.map((continent) =>
           <div className="flex gap-2 items-center">
-            <input type="radio" name={continent} id="" />
-            <p className="text-lg text-gray-300">{continent}</p>
+            <input type="radio" id={continent} name="contientRadio" onChange={(e) => setSelectedRadio(e.target.id)}/>
+            <label className="text-lg text-gray-300 cursor-pointer" htmlFor={continent}>{continent}</label>
           </div>
           )
         }
@@ -29,6 +30,7 @@ const Countries = () => {
       <div className="grid md:grid-cols-4 gap-4">
           {
             data
+            .filter((country) => country.continents[0].includes(selectedRadio))
             .slice(0, rangeValue)
             .map((country) =>
             <div className="col-span-1 bg-gray-200 p-4 grid rounded-lg gap-2">
