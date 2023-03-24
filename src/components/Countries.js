@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+
 const Countries = () => {
   const [data, setData] = useState([])
+  const [rangeValue, setRangeValue] = useState(36);
 
   useEffect(() => {
     axios
@@ -13,11 +15,13 @@ const Countries = () => {
     <div className="flex flex-col justify-center my-10">
       <h1 className="text-center text-3xl font-medium mb-10">Countries</h1>
       <div className="flex bg-gray-500 w-full rounded-lg px-4 my-6 py-3">
-        <p>Hi</p>
+        <input type="range" defaultValue={rangeValue} onChange={(e) => setRangeValue(e.target.value)} min="1" max="250" id="" />
       </div>
       <div className="grid md:grid-cols-4 gap-4">
           {
-            data.map((country) =>
+            data
+            .slice(0, rangeValue)
+            .map((country) =>
             <div className="col-span-1 bg-gray-200 p-4 grid rounded-lg gap-2">
               <h2 className="text-center font-medium text-xl">
                 {country.name.common}
