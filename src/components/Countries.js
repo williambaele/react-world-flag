@@ -12,7 +12,10 @@ const Countries = () => {
   return (
     <div className="flex flex-col justify-center my-10">
       <h1 className="text-center text-3xl font-medium mb-10">Countries</h1>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="flex bg-gray-500 w-full rounded-lg px-4 my-6 py-3">
+        <p>Hi</p>
+      </div>
+      <div className="grid md:grid-cols-4 gap-4">
           {
             data.map((country) =>
             <div className="col-span-1 bg-gray-200 p-4 grid rounded-lg gap-2">
@@ -25,7 +28,7 @@ const Countries = () => {
               <p>
                 Population: {country.population}
               </p>
-              <img src={country.flags.png} className="rounded-lg"/>
+              <img src={country.flags.png} className="rounded-lg" alt={"drapeau " + country.name.common}/>
             </div> )
           }
       </div>
