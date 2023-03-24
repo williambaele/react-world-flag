@@ -4,6 +4,7 @@ import axios from "axios";
 const Countries = () => {
   const [data, setData] = useState([])
   const [rangeValue, setRangeValue] = useState(36);
+  const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   useEffect(() => {
     axios
@@ -14,8 +15,16 @@ const Countries = () => {
   return (
     <div className="flex flex-col justify-center my-10">
       <h1 className="text-center text-3xl font-medium mb-10">Countries</h1>
-      <div className="flex bg-gray-500 w-full rounded-lg px-4 my-6 py-3">
+      <div className="flex justify-between bg-gray-500 w-full rounded-lg px-10 my-6 py-3">
         <input type="range" defaultValue={rangeValue} onChange={(e) => setRangeValue(e.target.value)} min="1" max="250" id="" />
+        {
+          radios.map((continent) =>
+          <div className="flex gap-2 items-center">
+            <input type="radio" name={continent} id="" />
+            <p className="text-lg text-gray-300">{continent}</p>
+          </div>
+          )
+        }
       </div>
       <div className="grid md:grid-cols-4 gap-4">
           {
