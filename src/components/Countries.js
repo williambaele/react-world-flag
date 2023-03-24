@@ -10,8 +10,13 @@ const Countries = () => {
   }, [])
 
   return (
-    <div>
-      <h1>Countries</h1>
+    <div className="flex flex-col justify-center my-10">
+      <h1 className="text-center text-3xl font-medium mb-10">Countries</h1>
+      <div className="grid grid-cols-5 gap-4">
+          {
+            data.map((country) => <div className="col-span-1 bg-red-200 p-4">{country.name.common}</div> )
+          }
+      </div>
     </div>
   );
 };
