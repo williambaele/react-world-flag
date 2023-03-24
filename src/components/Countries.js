@@ -12,19 +12,20 @@ const Countries = () => {
   return (
     <div className="flex flex-col justify-center my-10">
       <h1 className="text-center text-3xl font-medium mb-10">Countries</h1>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-4 gap-4">
           {
             data.map((country) =>
-            <div className="col-span-1 bg-red-200 p-4 grid">
-              <h2 className="font-medium text-lg">
+            <div className="col-span-1 bg-gray-200 p-4 grid rounded-lg gap-2">
+              <h2 className="text-center font-medium text-xl">
                 {country.name.common}
               </h2>
               <p>
-                {country.capital}
+                Capital: {country.capital}
               </p>
               <p>
-                {country.population}
+                Population: {country.population}
               </p>
+              <img src={country.flags.png} className="rounded-lg"/>
             </div> )
           }
       </div>
